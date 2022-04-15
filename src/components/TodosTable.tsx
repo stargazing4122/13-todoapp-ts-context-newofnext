@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TodosContext } from '../context/todos'
 import { TodoRow } from './TodoRow'
 
 const TodosTable = () => {
+  const { todos } = useContext(TodosContext);
   return (
     <table className="table table-dark table-striped">
       <thead>
@@ -13,7 +15,11 @@ const TodosTable = () => {
         </tr>
       </thead>
       <tbody>
-        <TodoRow />
+        {
+          todos.map( todo => (
+            <TodoRow key={ todo.id } todo={ todo }/>
+          ))
+        }
       </tbody>
     </table>
   )

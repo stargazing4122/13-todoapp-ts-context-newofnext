@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { Todo } from '../interfaces'
 
-export const TodoRow = () => {
+interface Props {
+  todo: Todo
+}
+export const TodoRow: FC<Props> = ({ todo }) => {
   return (
     <tr>
-      <td>1341234124j12</td>
-      <td>Learn React</td>
-      <td>Not done</td>
+      <td>{ todo.id }</td>
+      <td>{ todo.title }</td>
+      <td>{ todo.isDone? 'Done' : 'Not done'}</td>
       <td>
         <button
         type="button"
