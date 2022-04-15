@@ -25,14 +25,19 @@ export const TodosProvider: FC<Props> = ({ children }) => {
 
   const [state, dispatch] = useReducer( todosReducer, TODOS_INITIAL_STATE);
 
-    //methods
-    //...
+  //methods
+  const addNewTodo = ( todo: Todo ) => {
+    dispatch({
+      type: '[Todos] - add new todo',
+      payload: todo,
+    })
+  }
 
   return (
     <TodosContext.Provider value={{
       ...state,
       //methods
-      //...
+      addNewTodo,
     }}>
       { children }
     </TodosContext.Provider>
