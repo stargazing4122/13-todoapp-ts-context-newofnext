@@ -1,5 +1,6 @@
 import React, { FC, useContext } from 'react'
 import { TodosContext } from '../context/todos'
+import { UIContext } from '../context/ui'
 import { Todo } from '../interfaces'
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 export const TodoRow: FC<Props> = ({ todo }) => {
 
   const { deleteTodo, toggleTodo, setEditTodo } = useContext(TodosContext);
+  const { openModal } = useContext(UIContext)
 
   const handleDeleteClick = () => {
     deleteTodo( todo.id );
@@ -16,6 +18,7 @@ export const TodoRow: FC<Props> = ({ todo }) => {
     toggleTodo( todo.id );
   }
   const handleUpdateClick = () => {
+    openModal();
     setEditTodo( todo );
   }
   return (

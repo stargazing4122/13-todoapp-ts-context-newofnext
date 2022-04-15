@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormAddTodo } from './FormAddTodo'
 import TodosTable from './TodosTable'
+import { TodoModal } from './ui/TodoModal'
 
 export const TodoPage = () => {
   return (
@@ -13,6 +14,8 @@ export const TodoPage = () => {
           <FormAddTodo />
         </div>
       </div>
+
+      <TodoModal />
     </div>
   )
 }

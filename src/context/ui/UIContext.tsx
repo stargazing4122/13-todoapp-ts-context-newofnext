@@ -3,6 +3,8 @@ import { createContext } from 'react';
 
 interface ContextProps {
   isModalOpen: boolean;
+  openModal: () => void;
+  closeModal: () => void;
 }
 
 
