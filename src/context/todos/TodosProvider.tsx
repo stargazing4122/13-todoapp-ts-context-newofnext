@@ -1,4 +1,4 @@
-import { FC, useReducer } from 'react';
+import { FC, useEffect, useReducer } from 'react';
 
 import { TodosContext, todosReducer } from './';
 import { Todo } from '../../interfaces';
@@ -8,13 +8,8 @@ export interface TodosState {
   todos: Todo[];
 }
 
-const TODOS_INITIAL_STATE: TodosState = {
-  todos: [{
-    id: (new Date().getTime()).toString(),
-    title: 'Learn the basic of programming',
-    isDone: false,
-  }],
-}
+const TODOS_INITIAL_STATE: TodosState = JSON.parse(localStorage.getItem('todos-context-next') as string) || {todos: []};
+
 
 interface Props {
   children: React.ReactNode;
@@ -24,6 +19,9 @@ interface Props {
 export const TodosProvider: FC<Props> = ({ children }) => {
 
   const [state, dispatch] = useReducer( todosReducer, TODOS_INITIAL_STATE);
+  useEffect(() => {
+    localStorage.setItem('todos-context-next', JSON.stringify( state ));
+  }, [ state ])
 
   //methods
   const addNewTodo = ( todo: Todo ) => {
