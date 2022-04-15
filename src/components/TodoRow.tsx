@@ -7,10 +7,16 @@ interface Props {
 }
 export const TodoRow: FC<Props> = ({ todo }) => {
 
-  const { deleteTodo } = useContext(TodosContext);
+  const { deleteTodo, toggleTodo } = useContext(TodosContext);
 
-  const handleButtonClick = () => {
+  const handleDeleteClick = () => {
     deleteTodo( todo.id );
+  }
+  const handleToggleClick = () => {
+    toggleTodo( todo.id );
+  }
+  const handleUpdateClick = () => {
+    
   }
   return (
     <tr>
@@ -21,7 +27,7 @@ export const TodoRow: FC<Props> = ({ todo }) => {
         <button
         type="button"
         className="btn btn-success"
-        onClick={ handleButtonClick }
+        onClick={ handleToggleClick }
         >
           <i className="fa-solid fa-arrow-right-arrow-left"></i>
         </button>
@@ -29,7 +35,7 @@ export const TodoRow: FC<Props> = ({ todo }) => {
         <button
         type="button"
         className="btn btn-info"
-        onClick={ handleButtonClick }
+        onClick={ handleUpdateClick }
         >
           <i className="fa-solid fa-pen"></i>
         </button>
@@ -37,7 +43,7 @@ export const TodoRow: FC<Props> = ({ todo }) => {
         <button
         type="button"
         className="btn btn-danger"
-        onClick={ handleButtonClick }
+        onClick={ handleDeleteClick }
         >
           <i className="fa-solid fa-trash-can"></i>
         </button>

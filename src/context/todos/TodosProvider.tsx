@@ -31,9 +31,16 @@ export const TodosProvider: FC<Props> = ({ children }) => {
     })
   };
 
-  const deleteTodo = (todoId: string ) => {
+  const deleteTodo = ( todoId: string ) => {
     dispatch({
-      type: '[Todos] - add delete a todo',
+      type: '[Todos] - add delete todo',
+      payload: { id: todoId },
+    })
+  }
+
+  const toggleTodo = ( todoId: string ) => {
+    dispatch({
+      type: '[Todos] - add toggle todo',
       payload: { id: todoId },
     })
   }
@@ -44,6 +51,7 @@ export const TodosProvider: FC<Props> = ({ children }) => {
       //methods
       addNewTodo,
       deleteTodo,
+      toggleTodo,
     }}>
       { children }
     </TodosContext.Provider>
