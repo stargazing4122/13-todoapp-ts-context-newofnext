@@ -6,9 +6,15 @@ import { Todo } from '../../interfaces';
 
 export interface TodosState {
   todos: Todo[];
+  editTodo: Todo | null;
 }
 
-const TODOS_INITIAL_STATE: TodosState = JSON.parse(localStorage.getItem('todos-context-next') as string) || {todos: []};
+const TODOS_INITIAL_STATE: TodosState = 
+  JSON.parse(localStorage.getItem('todos-context-next') as string) || 
+  {
+    todos: [],
+    editTodo: null,
+  };
 
 
 interface Props {
@@ -45,6 +51,13 @@ export const TodosProvider: FC<Props> = ({ children }) => {
     })
   }
 
+  const setEditTodo = ( todo: Todo) => {
+    dispatch({
+      type: '[Todos] - set edit todo',
+      payload: todo,
+    })
+  }
+
   return (
     <TodosContext.Provider value={{
       ...state,
@@ -52,6 +65,7 @@ export const TodosProvider: FC<Props> = ({ children }) => {
       addNewTodo,
       deleteTodo,
       toggleTodo,
+      setEditTodo,
     }}>
       { children }
     </TodosContext.Provider>

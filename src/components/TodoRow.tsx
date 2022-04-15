@@ -7,7 +7,7 @@ interface Props {
 }
 export const TodoRow: FC<Props> = ({ todo }) => {
 
-  const { deleteTodo, toggleTodo } = useContext(TodosContext);
+  const { deleteTodo, toggleTodo, setEditTodo } = useContext(TodosContext);
 
   const handleDeleteClick = () => {
     deleteTodo( todo.id );
@@ -16,7 +16,7 @@ export const TodoRow: FC<Props> = ({ todo }) => {
     toggleTodo( todo.id );
   }
   const handleUpdateClick = () => {
-    
+    setEditTodo( todo );
   }
   return (
     <tr>

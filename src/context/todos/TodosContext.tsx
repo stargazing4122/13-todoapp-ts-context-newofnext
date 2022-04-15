@@ -8,6 +8,7 @@ interface ContextProps {
   addNewTodo: (todo: Todo) => void;
   deleteTodo: (todoId: string) => void;
   toggleTodo: (todoId: string) => void;
+  setEditTodo: (todo: Todo) => void;
 }
 
 export const TodosContext = createContext<ContextProps>({} as ContextProps);

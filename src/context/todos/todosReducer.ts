@@ -5,6 +5,8 @@ type TodosActionType =
   |{ type: '[Todos] - add new todo'; payload: Todo; }
   |{ type: '[Todos] - add delete todo'; payload: { id: string }; }
   |{ type: '[Todos] - add toggle todo'; payload: { id: string }; }
+  |{ type: '[Todos] - set edit todo'; payload: Todo; }
+  |{ type: '[Todos] - clean edit todo'; }
 
 
 export const todosReducer = ( state: TodosState, action: TodosActionType):TodosState => {
@@ -30,6 +32,18 @@ export const todosReducer = ( state: TodosState, action: TodosActionType):TodosS
             ? {...todo, isDone: !todo.isDone }
             : todo
         ))
+      }
+    
+    case '[Todos] - set edit todo':
+      return {
+        ...state,
+        editTodo: {...action.payload},
+      }
+    
+    case '[Todos] - clean edit todo':
+      return {
+        ...state,
+        editTodo: null,
       }
 
     default:
