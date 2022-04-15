@@ -1,9 +1,18 @@
 import React from 'react'
+import { FormAddTodo } from './FormAddTodo'
+import TodosTable from './TodosTable'
 
 export const TodoPage = () => {
   return (
     <div className="container">
-      <h2>hola mundo</h2>
+      <div className="row">
+        <div className="col-8">
+          <TodosTable />
+        </div>
+        <div className="col-4">
+          <FormAddTodo />
+        </div>
+      </div>
     </div>
   )
 }
