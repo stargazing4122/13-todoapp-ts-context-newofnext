@@ -16,14 +16,30 @@ export const TodoRow: FC<Props> = ({ todo }) => {
     <tr>
       <td>{ todo.id }</td>
       <td>{ todo.title }</td>
-      <td>{ todo.isDone? 'Done' : 'Not done'}</td>
+      <td>{ todo.isDone? '✔️' : '❌'}</td>
       <td>
+        <button
+        type="button"
+        className="btn btn-success"
+        onClick={ handleButtonClick }
+        >
+          <i className="fa-solid fa-arrow-right-arrow-left"></i>
+        </button>
+        
+        <button
+        type="button"
+        className="btn btn-info"
+        onClick={ handleButtonClick }
+        >
+          <i className="fa-solid fa-pen"></i>
+        </button>
+
         <button
         type="button"
         className="btn btn-danger"
         onClick={ handleButtonClick }
         >
-          Delete
+          <i className="fa-solid fa-trash-can"></i>
         </button>
       </td>
     </tr>
