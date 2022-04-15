@@ -2,6 +2,6 @@
 - React
 - Typescript
 - useContext + useReducer
-- Css
+- Bootstrap 5
 - React modal
 - Local storage
